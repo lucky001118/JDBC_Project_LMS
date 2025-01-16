@@ -97,12 +97,6 @@ Contributions are welcome! Please fork the repository, create a new branch, and 
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## Acknowledgments
 
 - Thanks to the open-source community for tools and resources.
@@ -114,7 +108,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 For any queries or issues, please feel free to contact:
 - **Name**: Lucky Manikpur
-- **Email**: [your-email@example.com]
+- **Email**: [manikpurilucky218@gmail.com]
 ```
-
-Replace placeholders like `your-username` and `your-email@example.com` with your actual information.
