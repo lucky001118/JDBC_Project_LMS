@@ -16,6 +16,13 @@ This project is a **Library Management System** built using Java and JDBC (Java 
 
 ---
 
+## ER Diagram
+
+The following diagram represents the **Entity-Relationship (ER) Model** for the Library Management System. It shows the structure of the database, including entities, attributes, and their relationships.
+![image alt](https://github.com/lucky001118/JDBC_Project_LMS/blob/bdddd8370196671c526a4f0856840bd68e8d92b4/Screenshot%20(241).png)
+
+---
+
 ## Technologies Used
 
 - **Java**: Core application logic.
@@ -94,7 +101,6 @@ library-management-system/
 ## Contributing
 
 Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request.
-![image alt](https://github.com/lucky001118/JDBC_Project_LMS/blob/bdddd8370196671c526a4f0856840bd68e8d92b4/Screenshot%20(241).png)
 
 ---
 
