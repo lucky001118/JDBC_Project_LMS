@@ -1,4 +1,3 @@
-
 # Library Management System
 
 This project is a **Library Management System** built using Java and JDBC (Java Database Connectivity). It allows users to manage a library's books, members, and transactions. The system is designed for small to medium-sized libraries and ensures efficient tracking of books and borrowing activities.
