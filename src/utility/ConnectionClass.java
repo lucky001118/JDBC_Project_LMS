@@ -11,7 +11,7 @@ public class ConnectionClass {
     String driverClassName = "com.mysql.jdbc.Driver";
     //2) creating the jdbc connection url
     String connectionUrl = "jdbc:mysql://localhost:3306/anudeep_library_management_system";
-    // 3) jdbc username
+    // 3) jdbc MySQL username
     String dbUser = "root";
     // 4) password.
     String dbPwd = "Lucky@server2002";
