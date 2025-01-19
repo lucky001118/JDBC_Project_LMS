@@ -13,7 +13,7 @@ public class ConnectionClass {
     String connectionUrl = "jdbc:mysql://localhost:3306/anudeep_library_management_system";
     // 3) jdbc MySQL username
     String dbUser = "root";
-    // 4) password.
+    // 4) MySQL password.
     String dbPwd = "Lucky@server2002";
 
     // making the connectionFactory object for the making the connection
