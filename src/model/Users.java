@@ -27,9 +27,9 @@ public class Users {
     private String password;
     private String name;
     private Role role = Role.Customer;
-    private Date registrationDate = new Date();
-    private Date membershipStartDate = new Date();
-    private Date membershipEndDate = new Date();
+    private String registrationDate ;
+    private String membershipStartDate ;
+    private String membershipEndDate ;
     private String address;
     private String phone;
     private boolean active;
@@ -82,29 +82,29 @@ public class Users {
         return this;
     }
 
-    public Date registrationDate() {
+    public String registrationDate() {
         return registrationDate;
     }
 
-    public Users setRegistrationDate(Date registrationDate) {
+    public Users setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
         return this;
     }
 
-    public Date membershipStartDate() {
+    public String membershipStartDate() {
         return membershipStartDate;
     }
 
-    public Users setMembershipStartDate(Date membershipStartDate) {
+    public Users setMembershipStartDate(String membershipStartDate) {
         this.membershipStartDate = membershipStartDate;
         return this;
     }
 
-    public Date membershipEndDate() {
+    public String membershipEndDate() {
         return membershipEndDate;
     }
 
-    public Users setMembershipEndDate(Date membershipEndDate) {
+    public Users setMembershipEndDate(String membershipEndDate) {
         this.membershipEndDate = membershipEndDate;
         return this;
     }
@@ -163,7 +163,7 @@ public class Users {
         return this;
     }
 
-    public Users(int userID, String email, String password, String name, Role role, Date registrationDate, Date membershipStartDate, Date membershipEndDate, String address, String phone, boolean active, int totalBooksIssued, int totalBooksReturned, double pendingFine) {
+    public Users(int userID, String email, String password, String name, Role role, String registrationDate, String membershipStartDate, String membershipEndDate, String address, String phone, boolean active, int totalBooksIssued, int totalBooksReturned, double pendingFine) {
         this.userID = userID;
         this.email = email;
         this.password = password;

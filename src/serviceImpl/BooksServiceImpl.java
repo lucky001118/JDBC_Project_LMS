@@ -5,6 +5,8 @@ import daoImpl.BooksDaoImpl;
 import model.Books;
 import service.BooksService;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BooksServiceImpl implements BooksService {
@@ -30,7 +32,18 @@ public class BooksServiceImpl implements BooksService {
     }
 
     @Override
-    public String registerNewBook(Books book) {
+    public String registerNewBook(Books book)
+    {
+        // Get the current date
+        LocalDate date = LocalDate.now();
+
+        // Define the desired format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Format the date to string
+        String formattedDate = date.format(formatter);
+
+        bookDao.registerNewBook(book.setAddedDate(String.valueOf(java.sql.Date.valueOf(formattedDate))));
         return bookDao.registerNewBook(book);
     }
 

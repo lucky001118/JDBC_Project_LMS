@@ -20,7 +20,7 @@ public class Books {
     private String genre;
     private int quantity;
     private double price; //For customers purchasing books only
-    private Date addedDate = new Date();  //book added into library date
+    private String addedDate; //= new Date();  //book added into library date
 
     public int bookId() {
         return bookId;
@@ -76,16 +76,16 @@ public class Books {
         return this;
     }
 
-    public Date addedDate() {
+    public String addedDate() {
         return addedDate;
     }
 
-    public Books setAddedDate(Date addedDate) {
+    public Books setAddedDate(String addedDate) {
         this.addedDate = addedDate;
         return this;
     }
 
-    public Books(int bookId, String title, String author, String genre, int quantity, double price, Date addedDate) {
+    public Books(int bookId, String title, String author, String genre, int quantity, double price, String addedDate) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;

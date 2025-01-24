@@ -117,9 +117,9 @@ public class UserDaoImpl implements UserDao {
             ps.setString(2,users.password());
             ps.setString(3,users.name());
             ps.setString(4, String.valueOf(users.role()));
-            ps.setDate(5, (Date) users.registrationDate());
-            ps.setDate(6, (Date) users.membershipStartDate());
-            ps.setDate(7, (Date) users.membershipEndDate());
+            ps.setString(5, users.registrationDate());
+            ps.setString(6,users.membershipStartDate());
+            ps.setString(7,users.membershipEndDate());
             ps.setString(8,users.address());
             ps.setString(9,users.phone());
             ps.setBoolean(10,users.active());

@@ -184,13 +184,13 @@ public class BooksDaoImpl implements BookDao {
             Connection connection = ConnectionClass.getInstance().getConnection();
 
             //prepareStatement for rebuilding the connection and query
-            PreparedStatement ps = connection.prepareStatement(bookQuery.UPDATE_BOOK_INFORMATION());
+            PreparedStatement ps = connection.prepareStatement(bookQuery.REGISTER_NEW_BOOK());
             ps.setString(1,book.title());
             ps.setString(2,book.author());
             ps.setString(3,book.genre());
             ps.setInt(4,book.quantity());
             ps.setDouble(5,book.price());
-            ps.setDate(6, (Date) book.addedDate());
+            ps.setString(6,book.addedDate());
 
             //Executing the query
             int rs = ps.executeUpdate();

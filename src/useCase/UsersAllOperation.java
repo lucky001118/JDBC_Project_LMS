@@ -72,6 +72,8 @@ public class UsersAllOperation {
                 System.out.print("Enter the user Id: ");
                 int updateIid = scanner.nextInt();
                 updateUsers.setUserID(updateIid);
+
+                scanner.nextLine(); // Consume the newline character after nextInt()
                 System.out.print("Enter the user Email: ");
                 String updatedEmail = scanner.nextLine();
                 updateUsers.setEmail(updatedEmail);

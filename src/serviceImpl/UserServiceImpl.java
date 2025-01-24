@@ -6,6 +6,8 @@ import exceptions.UserException;
 import model.Users;
 import service.UserService;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -27,17 +29,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String registerUser(Users users) throws UserException {
-        users.setRegistrationDate(new Date());
-        users.setMembershipStartDate(new Date());
+        // Get the current date
+        LocalDate date = LocalDate.now();
 
-        Date currentDate = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(currentDate);
-        // Add 1 year to the current date
-        calendar.add(Calendar.YEAR, 1);
-        Date nextYearDate = calendar.getTime();
+        // Define the desired format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        users.setMembershipEndDate(nextYearDate);
+        // Format the date to string
+        String currentDate = date.format(formatter);
+
+        users.setRegistrationDate(currentDate);
+        users.setMembershipStartDate(currentDate);
+        users.setMembershipEndDate(currentDate);
         return userDao.registerUser(users);
     }
 
@@ -48,17 +51,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String updateUser(Users users) throws UserException {
-        users.setRegistrationDate(new Date());
-        users.setMembershipStartDate(new Date());
-
-        Date currentDate = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(currentDate);
-        // Add 1 year to the current date
-        calendar.add(Calendar.YEAR, 1);
-        Date nextYearDate = calendar.getTime();
-
-        users.setMembershipEndDate(nextYearDate);
         return userDao.updateUser(users);
     }
 }
