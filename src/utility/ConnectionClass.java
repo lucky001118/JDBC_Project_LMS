@@ -6,9 +6,14 @@ import java.sql.SQLException;
 
 //Singletone class for build the connection
 public class ConnectionClass {
+    //jdbc class configurations 
+    //1) loading the jdbc class 
     String driverClassName = "com.mysql.jdbc.Driver";
+    //2) creating the jdbc connection url
     String connectionUrl = "jdbc:mysql://localhost:3306/anudeep_library_management_system";
+    // 3) jdbc MySQL username
     String dbUser = "root";
+    // 4) MySQL password.
     String dbPwd = "Lucky@server2002";
 
     // making the connectionFactory object for the making the connection
