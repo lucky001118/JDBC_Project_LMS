@@ -1,6 +1,7 @@
 package daoImpl;
 
 import dao.BookDao;
+import exceptions.BookException;
 import model.Books;
 import query.BookQuery;
 import utility.ConnectionClass;
@@ -14,7 +15,7 @@ public class BooksDaoImpl implements BookDao {
     //making the object of the booksQuery class where all the Books table related query are written
     private BookQuery bookQuery = new BookQuery();
     @Override
-    public List<Books> getAllBooks() {
+    public List<Books> getAllBooks() throws BookException{
         List<Books> allBooks = new ArrayList<>();
         try{
 
@@ -39,12 +40,16 @@ public class BooksDaoImpl implements BookDao {
             System.out.println();
             System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-            // Print rows of data
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    System.out.printf("%-30s", rs.getString(i)); // Format data
+            if (rs.next()){
+                // Print rows of data
+                while (rs.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.printf("%-30s", rs.getString(i)); // Format data
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+            }else {
+                throw new BookException("The book Table is empty");
             }
 
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -55,7 +60,7 @@ public class BooksDaoImpl implements BookDao {
     }
 
     @Override
-    public Books getBookByBookId(Integer bookId) {
+    public Books getBookByBookId(Integer bookId) throws BookException{
         Books books = new Books();
         try{
 
@@ -81,12 +86,16 @@ public class BooksDaoImpl implements BookDao {
             System.out.println();
             System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-            // Print rows of data
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    System.out.printf("%-30s", rs.getString(i)); // Format data
+            if (rs.next()!=false){
+                // Print rows of data
+                while (rs.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.printf("%-30s", rs.getString(i)); // Format data
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+            }else {
+                throw new BookException("The book is not found using the provided id..");
             }
 
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");

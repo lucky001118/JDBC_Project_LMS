@@ -34,9 +34,9 @@ public class UsersAllOperation {
                 userService.getAllUsers();
                 break;
             case 2:
+                scanner.nextLine(); // Consume the newline character after nextInt()
                 System.out.println("You wants to see specific the users information");
                 System.out.print("Enter the user's id: ");
-                scanner.nextLine(); // Consume the newline character after nextInt()
                 int userId = scanner.nextInt();
                 userService.getUserByUserID(userId);
                 break;

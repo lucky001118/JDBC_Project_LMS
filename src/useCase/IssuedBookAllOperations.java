@@ -19,7 +19,8 @@ public class IssuedBookAllOperations {
                 "Click 2 for Get Specific issued book information \n" +
                 "Click 3 for Register new issued book \n" +
                 "Click 4 for delete the issued book \n" +
-                "Click 5 for update the issued book's information ");
+                "Click 5 for update the issued book's information \n"+
+                "Click 6 for return the book: ");
 
         int choose = scanner.nextInt();
         switch (choose){
@@ -29,8 +30,8 @@ public class IssuedBookAllOperations {
                 break;
             case 2:
                 System.out.println("You wants to see specific the issued books information");
-                System.out.print("Enter the book id: ");
                 scanner.nextLine(); // Consume the newline character after nextInt()
+                System.out.print("Enter the book id: ");
                 int issuedBookId = scanner.nextInt();
                 issuedBookService.getTheIssuedBookByID(issuedBookId);
                 break;
@@ -46,6 +47,11 @@ public class IssuedBookAllOperations {
                 System.out.print("Enter the user id that book is given to the persion: ");
                 int userId = scanner.nextInt();
                 issuedBooks.setUserId(userId);
+
+                scanner.nextLine(); // Consume the newline character after nextInt()
+                System.out.print("Enter the due date for the issued book in (yyyy-mm-dd) format: ");
+                String dueDate = scanner.nextLine();
+                issuedBooks.setDueDate(dueDate);
 
                 //register the issued book
                 issuedBookService.issueBook(issuedBooks);
@@ -86,6 +92,26 @@ public class IssuedBookAllOperations {
 
                 //update
                 issuedBookService.updateIssuedBookInformation(updateIssuedBooks);
+                break;
+            case 6:
+                IssuedBooks returnbook = new IssuedBooks();
+                System.out.println("You wants to return the book");
+                scanner.nextLine(); // Consume the newline character after nextInt()
+
+                System.out.print("Enter the issued Id: ");
+                int issuedId1 = scanner.nextInt();
+                returnbook.setIssueID(issuedId1);
+                scanner.nextLine();
+
+                System.out.print("Write true if book returned else false: ");
+                boolean isReturn = scanner.nextBoolean();
+                returnbook.setReturned(isReturn);
+
+                System.out.print("Write true if fine paid else false: ");
+                boolean isFinePaid = scanner.nextBoolean();
+                returnbook.setFinePaid(isFinePaid);
+
+                issuedBookService.returnBook(returnbook);
                 break;
             default:
                 System.out.println("You have choose invalid option please re-try..");

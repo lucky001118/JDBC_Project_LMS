@@ -39,14 +39,17 @@ public class IssuedBookDaoImpl implements IssuedBookDao {
             System.out.println();
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-            // Print rows of data
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    System.out.printf("%-30s", rs.getString(i)); // Format data
+            if (rs.next()!=false){
+                // Print rows of data
+                while (rs.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.printf("%-30s", rs.getString(i)); // Format data
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+            }else {
+                throw new BookIssueException("The no record is available in issuedBook table");
             }
-
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         }catch (SQLException e){
             e.printStackTrace();
@@ -56,6 +59,7 @@ public class IssuedBookDaoImpl implements IssuedBookDao {
 
     @Override
     public IssuedBooks getTheIssuedBookByID(Integer issuedBookId) throws BookIssueException {
+        IssuedBooks issuedBooksInfo = new IssuedBooks();
 
         try{
 
@@ -82,18 +86,24 @@ public class IssuedBookDaoImpl implements IssuedBookDao {
             System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
             // Print rows of data
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    System.out.printf("%-30s", rs.getString(i)); // Format data
-                }
-                System.out.println();
+            if(rs.next()!=false){
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.printf("%-30s", rs.getString(i)); // Format data
+
+                        issuedBooksInfo.setIssueID(rs.getInt(1));
+                        issuedBooksInfo.setIssueDate(rs.getString(4));
+                        issuedBooksInfo.setDueDate(rs.getString(5));
+                    }
+                    System.out.println();
+            }else{
+                throw  new BookIssueException("There is no books found with this issued bookId");
             }
 
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return null;
+        return issuedBooksInfo;
     }
 
     @Override
@@ -108,9 +118,8 @@ public class IssuedBookDaoImpl implements IssuedBookDao {
             PreparedStatement ps = connection.prepareStatement(issuedBookQuery.ISSUE_BOOK());
             ps.setInt(1,issuedBooks.bookID());
             ps.setInt(2,issuedBooks.userId());
-            ps.setDate(3, (Date) issuedBooks.issueDate());
-            ps.setDate(4, (Date) issuedBooks.dueDate());
-            ps.setDate(5, (Date) issuedBooks.returnDate());
+            ps.setString(3, issuedBooks.issueDate());
+            ps.setString(4, issuedBooks.dueDate());
 
             //Executing the query
             int rs = ps.executeUpdate();
@@ -156,5 +165,30 @@ public class IssuedBookDaoImpl implements IssuedBookDao {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void returnBook(IssuedBooks issuedBooks) throws BookIssueException {
+        try {
+            //building the connection with jdbc
+            Connection connection = ConnectionClass.getInstance().getConnection();
+
+            //prepareStatement for rebuilding the connection and query
+            PreparedStatement ps = connection.prepareStatement(issuedBookQuery.RETURN_ISSUED_BOOK());
+            ps.setDouble(1, issuedBooks.fineAmount());
+            ps.setBoolean(2,issuedBooks.isReturned());
+            ps.setBoolean(3,issuedBooks.isFinePaid());
+            ps.setString(4,issuedBooks.returnDate());
+            ps.setInt(5,issuedBooks.issueID());
+
+            //execute the query
+            ps.executeUpdate();
+            System.out.println("***********************************************");
+            System.out.println("Book Returned Successfully");
+            System.out.println("***********************************************");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

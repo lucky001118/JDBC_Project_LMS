@@ -21,9 +21,9 @@ public class IssuedBooks {
     private int issueID;
     private int bookID;
     private int userId;  //Links to the Users table
-    private Date issueDate = new Date();
-    private Date dueDate = new Date();  //when it is access to the user
-    private Date returnDate = new Date();  //last date to return the book
+    private String issueDate ;
+    private String dueDate ;  //when it is access to the user
+    private String returnDate;  //last date to return the book
     private double fineAmount;
     private boolean isReturned;  //Indicates if the book is returned
     private boolean isFinePaid;  //Indicates if the fine is paid
@@ -55,29 +55,29 @@ public class IssuedBooks {
         return this;
     }
 
-    public Date issueDate() {
+    public String issueDate() {
         return issueDate;
     }
 
-    public IssuedBooks setIssueDate(Date issueDate) {
+    public IssuedBooks setIssueDate(String issueDate) {
         this.issueDate = issueDate;
         return this;
     }
 
-    public Date dueDate() {
+    public String dueDate() {
         return dueDate;
     }
 
-    public IssuedBooks setDueDate(Date dueDate) {
+    public IssuedBooks setDueDate(String dueDate) {
         this.dueDate = dueDate;
         return this;
     }
 
-    public Date returnDate() {
+    public String returnDate() {
         return returnDate;
     }
 
-    public IssuedBooks setReturnDate(Date returnDate) {
+    public IssuedBooks setReturnDate(String returnDate) {
         this.returnDate = returnDate;
         return this;
     }
@@ -112,7 +112,7 @@ public class IssuedBooks {
 
     }
 
-    public IssuedBooks(int issueID, int bookID, int userId, Date issueDate, Date dueDate, Date returnDate, double fineAmount, boolean isReturned, boolean isFinePaid) {
+    public IssuedBooks(int issueID, int bookID, int userId, String issueDate, String dueDate, String returnDate, double fineAmount, boolean isReturned, boolean isFinePaid) {
         this.issueID = issueID;
         this.bookID = bookID;
         this.userId = userId;

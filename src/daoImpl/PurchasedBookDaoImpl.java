@@ -39,12 +39,16 @@ public class PurchasedBookDaoImpl implements PurchasedBooksDao {
             System.out.println();
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-            // Print rows of data
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    System.out.printf("%-30s", rs.getString(i)); // Format data
+            if (rs.next()!=false){
+                // Print rows of data
+                while (rs.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.printf("%-30s", rs.getString(i)); // Format data
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+            }else {
+                throw  new PurchasedBookException("The Purchased book table is empty");
             }
 
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -81,13 +85,18 @@ public class PurchasedBookDaoImpl implements PurchasedBooksDao {
             System.out.println();
             System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-            // Print rows of data
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    System.out.printf("%-30s", rs.getString(i)); // Format data
+            if (rs.next()!=false){
+                // Print rows of data
+                while (rs.next()) {
+                    for (int i = 1; i <= columnCount; i++) {
+                        System.out.printf("%-30s", rs.getString(i)); // Format data
+                    }
+                    System.out.println();
                 }
-                System.out.println();
+            }else {
+                throw new PurchasedBookException("The purchased book was not found with this given id");
             }
+
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         }catch (SQLException e){
             e.printStackTrace();

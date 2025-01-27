@@ -1,5 +1,6 @@
 package useCase;
 
+import exceptions.BookException;
 import model.Books;
 import model.Users;
 import service.BooksService;
@@ -14,7 +15,7 @@ public class BooksAllOperations {
 
     private BooksService booksService = new BooksServiceImpl();
 
-    public void bookAllOperations(){
+    public void bookAllOperations() throws BookException {
         Scanner scanner = new Scanner(System.in);
         // Create a BufferedReader instance
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

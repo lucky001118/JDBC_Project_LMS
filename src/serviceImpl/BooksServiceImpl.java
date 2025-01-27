@@ -2,6 +2,7 @@ package serviceImpl;
 
 import dao.BookDao;
 import daoImpl.BooksDaoImpl;
+import exceptions.BookException;
 import model.Books;
 import service.BooksService;
 
@@ -12,12 +13,12 @@ import java.util.List;
 public class BooksServiceImpl implements BooksService {
     private BookDao bookDao = new BooksDaoImpl();
     @Override
-    public List<Books> getAllBooks() {
+    public List<Books> getAllBooks() throws BookException {
         return bookDao.getAllBooks();
     }
 
     @Override
-    public Books getBookByBookId(Integer bookId) {
+    public Books getBookByBookId(Integer bookId) throws BookException {
         return bookDao.getBookByBookId(bookId);
     }
 

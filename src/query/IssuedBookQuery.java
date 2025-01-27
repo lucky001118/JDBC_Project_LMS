@@ -3,9 +3,10 @@ package query;
 public class IssuedBookQuery {
     private String GET_ALL_ISSUEDBOOK = "SELECT * FROM IssuedBooks";
     private String GET_ISSUED_BOOK_BY_ID = "SELECT * FROM IssuedBooks WHERE IssueID = ?";
-    private  String ISSUE_BOOK = "INSERT INTO IssuedBooks(BookID,UserID,IssueDate,DueDate,ReturnDate) VALUES (?,?,?,?,?) ";
+    private  String ISSUE_BOOK = "INSERT INTO IssuedBooks(BookID,UserID,IssueDate,DueDate) VALUES (?,?,?,?) ";
     private String UPDATE_ISSUED_BOOK = "UPDATE IssuedBooks SET BookID = ?, UserID=?, IssueDate=?, DueDate=?, ReturnDate=?, FineAmount=?, IsReturned=?, IsFinePaid=? WHERE  IssueID=? ";
     private String DELETE_ISSUED_BOOK_BY_ID = "DELETE  FROM IssuedBooks WHERE IssueID = ?";
+    private String RETURN_ISSUED_BOOK = "UPDATE IssuedBooks SET FineAmount=?, IsReturned=?, IsFinePaid=?, returnDate=? WHERE  IssueID=?";
 
     public String GET_ALL_ISSUEDBOOK() {
         return GET_ALL_ISSUEDBOOK;
@@ -52,15 +53,24 @@ public class IssuedBookQuery {
         return this;
     }
 
+    public String RETURN_ISSUED_BOOK() {
+        return RETURN_ISSUED_BOOK;
+    }
+
+    public IssuedBookQuery setRETURN_ISSUED_BOOK(String RETURN_ISSUED_BOOK) {
+        this.RETURN_ISSUED_BOOK = RETURN_ISSUED_BOOK;
+        return this;
+    }
+
     public IssuedBookQuery(){
 
     }
-
-    public IssuedBookQuery(String GET_ALL_ISSUEDBOOK, String GET_ISSUED_BOOK_BY_ID, String ISSUE_BOOK, String UPDATE_ISSUED_BOOK, String DELETE_ISSUED_BOOK_BY_ID) {
+    public IssuedBookQuery(String GET_ALL_ISSUEDBOOK, String GET_ISSUED_BOOK_BY_ID, String ISSUE_BOOK, String UPDATE_ISSUED_BOOK, String DELETE_ISSUED_BOOK_BY_ID, String RETURN_ISSUED_BOOK) {
         this.GET_ALL_ISSUEDBOOK = GET_ALL_ISSUEDBOOK;
         this.GET_ISSUED_BOOK_BY_ID = GET_ISSUED_BOOK_BY_ID;
         this.ISSUE_BOOK = ISSUE_BOOK;
         this.UPDATE_ISSUED_BOOK = UPDATE_ISSUED_BOOK;
         this.DELETE_ISSUED_BOOK_BY_ID = DELETE_ISSUED_BOOK_BY_ID;
+        this.RETURN_ISSUED_BOOK = RETURN_ISSUED_BOOK;
     }
 }

@@ -12,5 +12,6 @@ public interface IssuedBookDao {
 
     public String updateIssuedBookInformation(IssuedBooks updatedInfo) throws BookIssueException;
     public void removeIssuedBook(Integer issuedBookId) throws BookIssueException;
+    public void returnBook(IssuedBooks issuedBooks) throws BookIssueException;
 
 }
