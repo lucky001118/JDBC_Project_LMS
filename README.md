@@ -3,6 +3,10 @@
 This project is a **Library Management System** built using Java and JDBC (Java Database Connectivity). It allows users to manage a library's books, members, and transactions. The system is designed for small to medium-sized libraries and ensures efficient tracking of books and borrowing activities.
 
 ---
+## Flow Digram of Library Management System
+
+![image alt](https://github.com/lucky001118/JDBC_Project_LMS/blob/bdddd8370196671c526a4f0856840bd68e8d92b4/Screenshot%20(241).png)
+---
 
 ## Features
 
