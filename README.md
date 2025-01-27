@@ -5,7 +5,7 @@ This project is a **Library Management System** built using Java and JDBC (Java 
 ---
 ## Flow Digram of Library Management System
 
-![image alt](https://github.com/lucky001118/JDBC_Project_LMS/blob/bdddd8370196671c526a4f0856840bd68e8d92b4/Screenshot%20(241).png)
+![image alt](https://github.com/lucky001118/JDBC_Project_LMS/blob/main/LMS.drawio.png?raw=true)
 ---
 
 ## Features
